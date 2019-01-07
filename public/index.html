@@ -23,10 +23,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.6/jquery.mousewheel.min.js"></script>
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div class="header"></div>
+    <div class="menu" id="menu"><ul class="menu-list" id="list"></ul></div>
+    <div class="content"></div>
+    <div class="footer"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -37,5 +44,27 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      var str = "";
+      for (var i = 0; i < 60; i++) {
+        // if (i < 50) {
+        //   str += "<li>" + i + '<div class="test">' + i + "ceui" + "</div></li>";
+        // } else {
+        //   str += "<li>" + i + " </li>";
+        // }
+        str += "<li>" + i + '<div class="test">' + i + "ceui" + "</div></li>";
+      }
+      $("#list").html(str);
+      $("#list").mousewheel(function(event, zz) {
+        let top = $("#list").scrollTop();
+        let newTop;
+        if (zz > 0) {
+          newTop = top - 10;
+        } else {
+          newTop = top + 10;
+        }
+        $("#list").scrollTop(newTop);
+      });
+    </script>
   </body>
 </html>
